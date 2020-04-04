@@ -27,71 +27,71 @@ export default {
           id: "0001",
           imgUrl:
             "http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png",
-          title: "景点门票"
+          title: "景点门票",
         },
         {
           id: "0002",
           imgUrl:
             "http://img1.qunarzz.com/piao/fusion/1804/ff/fdf170ee89594b02.png",
-          title: "广州必游"
+          title: "广州必游",
         },
         {
           id: "0003",
           imgUrl:
             "http://mp-piao-admincp.qunarzz.com/mp_piao_admin_mp_piao_admin/admin/20193/184e261814a5d07a5d3d08cd29cf590d.png",
-          title: "长隆度假区"
+          title: "长隆度假区",
         },
         {
           id: "0004",
           imgUrl:
             "http://img1.qunarzz.com/piao/fusion/1803/b6/37560ece9c62b502.png",
-          title: "广州塔"
+          title: "广州塔",
         },
         {
           id: "0005",
           imgUrl:
             "http://img1.qunarzz.com/piao/fusion/1803/3e/86314b2af03b7502.png",
-          title: "珠江夜游"
+          title: "珠江夜游",
         },
         {
           id: "0006",
           imgUrl:
             "http://img1.qunarzz.com/piao/fusion/1803/ab/6f7d6e44963c9302.png",
-          title: "泡温泉"
+          title: "泡温泉",
         },
         {
           id: "0007",
           imgUrl:
             "http://img1.qunarzz.com/piao/fusion/1803/c1/6f15f887179fa002.png",
-          title: "岭南印象园"
+          title: "岭南印象园",
         },
         {
           id: "0008",
           imgUrl:
             "http://img1.qunarzz.com/piao/fusion/1803/fa/2548667cb6e902.png",
-          title: "动植物园"
+          title: "动植物园",
         },
         {
           id: "0009",
           imgUrl:
             "http://mp-piao-admincp.qunarzz.com/mp_piao_admin_mp_piao_admin/admin/20193/a40ee278d67000f2a29d2e20f6a029b3.png",
-          title: "自然风光"
+          title: "自然风光",
         },
         {
           id: "0010",
           imgUrl:
             "http://img1.qunarzz.com/piao/fusion/1804/5a/13ceb38dcf262f02.png",
-          title: "一日游"
-        }
-      ]
+          title: "一日游",
+        },
+      ],
     };
   },
   computed: {
-    /* 
-      分页算法
-      一开始pages[0]=undefined,符合if条件，创建空数组，把第一条到第八条数据放进pages[0]这个数组，
-      第九条，pages[1]=undefined，同上
-    */
+    /*
+        分页算法
+        一开始pages[0]=undefined,符合if条件，创建空数组，把第一条到第八条数据放进pages[0]这个数组，
+        第九条，pages[1]=undefined，同上
+      */
     pages() {
       const pages = [];
       this.iconList.map((item, index) => {
@@ -102,8 +102,8 @@ export default {
         pages[page].push(item);
       });
       return pages;
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -115,6 +115,9 @@ export default {
   width 100%
   height 0
   padding-bottom 50%
+
+.icons
+  margin-top .1rem
 
   .icon
     position relative
