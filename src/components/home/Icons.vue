@@ -1,16 +1,12 @@
 <template>
   <div class="icons">
-    <swiper>
+    <swiper :options="swiperOption">
       <swiper-slide v-for="(page, index) of pages" :key="index">
         <div class="icon" v-for="item of page" :key="item.id">
           <div class="icon-img">
-            <img
-              class="icon-img-content"
-              :src="item.imgUrl"
-              :alt="item.title"
-            />
+            <img class="icon-img-content" :src="item.imgUrl" :alt="item.desc" />
           </div>
-          <p class="icon-title">{{ item.title }}</p>
+          <p class="icon-title">{{ item.desc }}</p>
         </div>
       </swiper-slide>
     </swiper>
@@ -20,70 +16,14 @@
 <script>
 export default {
   name: "HomeIcons",
+  props: {
+    list: Array,
+  },
   data() {
     return {
-      iconList: [
-        {
-          id: "0001",
-          imgUrl:
-            "http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png",
-          title: "景点门票",
-        },
-        {
-          id: "0002",
-          imgUrl:
-            "http://img1.qunarzz.com/piao/fusion/1804/ff/fdf170ee89594b02.png",
-          title: "广州必游",
-        },
-        {
-          id: "0003",
-          imgUrl:
-            "http://mp-piao-admincp.qunarzz.com/mp_piao_admin_mp_piao_admin/admin/20193/184e261814a5d07a5d3d08cd29cf590d.png",
-          title: "长隆度假区",
-        },
-        {
-          id: "0004",
-          imgUrl:
-            "http://img1.qunarzz.com/piao/fusion/1803/b6/37560ece9c62b502.png",
-          title: "广州塔",
-        },
-        {
-          id: "0005",
-          imgUrl:
-            "http://img1.qunarzz.com/piao/fusion/1803/3e/86314b2af03b7502.png",
-          title: "珠江夜游",
-        },
-        {
-          id: "0006",
-          imgUrl:
-            "http://img1.qunarzz.com/piao/fusion/1803/ab/6f7d6e44963c9302.png",
-          title: "泡温泉",
-        },
-        {
-          id: "0007",
-          imgUrl:
-            "http://img1.qunarzz.com/piao/fusion/1803/c1/6f15f887179fa002.png",
-          title: "岭南印象园",
-        },
-        {
-          id: "0008",
-          imgUrl:
-            "http://img1.qunarzz.com/piao/fusion/1803/fa/2548667cb6e902.png",
-          title: "动植物园",
-        },
-        {
-          id: "0009",
-          imgUrl:
-            "http://mp-piao-admincp.qunarzz.com/mp_piao_admin_mp_piao_admin/admin/20193/a40ee278d67000f2a29d2e20f6a029b3.png",
-          title: "自然风光",
-        },
-        {
-          id: "0010",
-          imgUrl:
-            "http://img1.qunarzz.com/piao/fusion/1804/5a/13ceb38dcf262f02.png",
-          title: "一日游",
-        },
-      ],
+      swiperOption: {
+        autoplay: false,
+      },
     };
   },
   computed: {
@@ -94,7 +34,7 @@ export default {
       */
     pages() {
       const pages = [];
-      this.iconList.map((item, index) => {
+      this.list.map((item, index) => {
         const page = Math.floor(index / 8);
         if (!pages[page]) {
           pages[page] = [];
