@@ -5,7 +5,7 @@
         <span class="iconfont back-icon">&#xe7eb;</span>
       </div>
     </router-link>
-    <div class="header-title">城市选择</div>
+    <div class="header-title">境内</div>
   </div>
 </template>
 
