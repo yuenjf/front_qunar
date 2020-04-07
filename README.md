@@ -2,26 +2,51 @@
 
 ### 介绍
 
-使用 Vue 搭建移动端旅游网站
+ 使用 vue + vue-cli3.x 搭建移动端旅游网站
 
 ### 组件使用
 
 - 轮播插件 [vue-awesome-swiper@2.6.7](https://github.com/surmon-china/vue-awesome-swiper/tree/v2.6.7)
+- 局部滚动插件 [better-scroll@1.x](https://github.com/ustbhuangyi/better-scroll)
+```
+  import BScroll from 'better-scroll'
+
+  mounted() {
+    let scroll = new BScroll(this.$refs.wrapper)
+  }
+```
 
 ### 样式笔记
 
 - 自动撑开
-  ```
+```
   display: flex
   flex: 1
-  ```
+```
 - 宽度固定，高度按宽高比设置
-  ```
+```
   overflow hidden
   width 100%
   height 0
   padding-bottom 31.25%
-  ```
+```
+
+- 使用flex实现垂直居中
+```
+  display flex
+  flex-direction column
+  justify-content center
+```
+
+- 实现移动端局部滚动(配合better-scroll)
+```
+  position absolute
+  overflow hidden
+  top 1.58rem
+  right 0
+  bottom 0
+  left 0
+```
 
 ###Vue 笔记
 
