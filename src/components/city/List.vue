@@ -13,69 +13,26 @@
       <div class="area">
         <div class="title border-topbottom">热门城市</div>
         <div class="button-list">
-          <div class="button-wrapper">
-            <div class="button">北京</div>
-          </div>
-          <div class="button-wrapper">
-            <div class="button">北京</div>
-          </div>
-          <div class="button-wrapper">
-            <div class="button">北京</div>
-          </div>
-          <div class="button-wrapper">
-            <div class="button">北京</div>
-          </div>
-          <div class="button-wrapper">
-            <div class="button">北京</div>
-          </div>
-          <div class="button-wrapper">
-            <div class="button">北京</div>
-          </div>
-          <div class="button-wrapper">
-            <div class="button">北京</div>
+          <div class="button-wrapper" v-for="item of hotCities" :key="item.id">
+            <div class="button">{{ item.name }}</div>
           </div>
         </div>
       </div>
-      <div class="area ">
-        <div class="title border-topbottom">A</div>
+      <!--   对象使用vfor，嵌套使用vfor   -->
+      <div class="area"
+           v-for="(item, key) of cities"
+           :key="key"
+           :ref="key"
+      >
+        <div class="title border-topbottom">{{ key }}</div>
         <ul class="item-list">
-          <li class="item border-bottom">阿拉尔</li>
-          <li class="item border-bottom">阿拉尔</li>
-          <li class="item border-bottom">阿拉尔</li>
-          <li class="item border-bottom">阿拉尔</li>
-          <li class="item border-bottom">阿拉尔</li>
-          <li class="item border-bottom">阿拉尔</li>
-          <li class="item border-bottom">阿拉尔</li>
-        </ul>
-        <div class="title border-topbottom">A</div>
-        <ul class="item-list">
-          <li class="item border-bottom">阿拉尔</li>
-          <li class="item border-bottom">阿拉尔</li>
-          <li class="item border-bottom">阿拉尔</li>
-          <li class="item border-bottom">阿拉尔</li>
-          <li class="item border-bottom">阿拉尔</li>
-          <li class="item border-bottom">阿拉尔</li>
-          <li class="item border-bottom">阿拉尔</li>
-        </ul>
-        <div class="title border-topbottom">A</div>
-        <ul class="item-list">
-          <li class="item border-bottom">阿拉尔</li>
-          <li class="item border-bottom">阿拉尔</li>
-          <li class="item border-bottom">阿拉尔</li>
-          <li class="item border-bottom">阿拉尔</li>
-          <li class="item border-bottom">阿拉尔</li>
-          <li class="item border-bottom">阿拉尔</li>
-          <li class="item border-bottom">阿拉尔</li>
-        </ul>
-        <div class="title border-topbottom">A</div>
-        <ul class="item-list">
-          <li class="item border-bottom">阿拉尔</li>
-          <li class="item border-bottom">阿拉尔</li>
-          <li class="item border-bottom">阿拉尔</li>
-          <li class="item border-bottom">阿拉尔</li>
-          <li class="item border-bottom">阿拉尔</li>
-          <li class="item border-bottom">阿拉尔</li>
-          <li class="item border-bottom">阿拉尔</li>
+          <li
+            class="item border-bottom"
+            v-for="innerItem of item"
+            :key="innerItem.id"
+          >
+            {{ innerItem.name }}
+          </li>
         </ul>
       </div>
     </div>
@@ -83,14 +40,28 @@
 </template>
 
 <script>
-  import BScroll from 'better-scroll'
+  import BScroll from "better-scroll";
 
   export default {
     name: "CityList",
+    props: {
+      hotCities: Array,
+      cities: Object,
+      letter: String
+    },
     mounted() {
-      let scroll = new BScroll(this.$refs.wrapper)
+      this.scroll = new BScroll(this.$refs.wrapper);
+    },
+    watch: {
+      //  使用watch监听letter的变化，通过better-scroll组件的scrollToElement方法改变对应的显示区域
+      letter() {
+        if (this.letter) {
+          const element = this.$refs[this.letter][0]
+          this.scroll.scrollToElement(element)
+        }
+      }
     }
-  }
+  };
 </script>
 
 <style scoped lang="stylus">

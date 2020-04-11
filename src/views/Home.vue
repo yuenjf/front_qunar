@@ -9,51 +9,51 @@
 </template>
 
 <script>
-import HomeHeader from "../components/home/Header";
-import HomeSwiper from "../components/home/Swiper";
-import HomeIcons from "../components/home/Icons";
-import HomeRecommend from "../components/home/Recommend";
-import HomeWeekend from "../components/home/Weekend";
-import axios from "axios";
+  import HomeHeader from "../components/home/Header";
+  import HomeSwiper from "../components/home/Swiper";
+  import HomeIcons from "../components/home/Icons";
+  import HomeRecommend from "../components/home/Recommend";
+  import HomeWeekend from "../components/home/Weekend";
+  import axios from "axios";
 
-export default {
-  name: "Home",
-  components: {
-    HomeHeader,
-    HomeSwiper,
-    HomeIcons,
-    HomeRecommend,
-    HomeWeekend,
-  },
-  data() {
-    return {
-      city: "城市",
-      swiperList: [],
-      iconList: [],
-      recommendList: [],
-      weekendList: [],
-    };
-  },
-  methods: {
-    getHomeInfo() {
-      axios.get("/api/index.json").then(this.getHomeInfoSucc);
+  export default {
+    name: "Home",
+    components: {
+      HomeHeader,
+      HomeSwiper,
+      HomeIcons,
+      HomeRecommend,
+      HomeWeekend,
     },
-    getHomeInfoSucc(res) {
-      res = res.data;
-      if (res.success && res.data) {
-        const data = res.data;
-        this.city = data.city;
-        this.swiperList = data.swiperList;
-        this.iconList = data.iconList;
-        this.recommendList = data.recommendList;
-        this.weekendList = data.weekendList;
-      }
+    data() {
+      return {
+        city: "城市",
+        swiperList: [],
+        iconList: [],
+        recommendList: [],
+        weekendList: [],
+      };
     },
-  },
-  mounted() {
-    this.getHomeInfo();
-  },
-};
+    methods: {
+      getHomeInfo() {
+        axios.get("/api/index.json").then(this.getHomeInfoSucc);
+      },
+      getHomeInfoSucc(res) {
+        res = res.data;
+        if (res.success && res.data) {
+          const data = res.data;
+          this.city = data.city;
+          this.swiperList = data.swiperList;
+          this.iconList = data.iconList;
+          this.recommendList = data.recommendList;
+          this.weekendList = data.weekendList;
+        }
+      },
+    },
+    created() {
+      this.getHomeInfo();
+    },
+  };
 </script>
 
 <style scoped></style>

@@ -12,7 +12,7 @@
   import BScroll from 'better-scroll'
 
   mounted() {
-    let scroll = new BScroll(this.$refs.wrapper)
+    this.scroll = new BScroll(this.$refs.wrapper)
   }
 ```
 
