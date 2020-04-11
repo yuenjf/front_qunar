@@ -6,14 +6,18 @@
         <div class="title border-topbottom">当前城市</div>
         <div class="button-list">
           <div class="button-wrapper">
-            <div class="button">北京</div>
+            <div class="button">{{this.city}}</div>
           </div>
         </div>
       </div>
       <div class="area">
         <div class="title border-topbottom">热门城市</div>
         <div class="button-list">
-          <div class="button-wrapper" v-for="item of hotCities" :key="item.id">
+          <div class="button-wrapper"
+               v-for="item of hotCities"
+               :key="item.id"
+               @click="handelCityClick(item.name)"
+          >
             <div class="button">{{ item.name }}</div>
           </div>
         </div>
@@ -30,6 +34,7 @@
             class="item border-bottom"
             v-for="innerItem of item"
             :key="innerItem.id"
+            @click="handelCityClick(innerItem.name)"
           >
             {{ innerItem.name }}
           </li>
@@ -41,6 +46,7 @@
 
 <script>
   import BScroll from "better-scroll";
+  import {mapState, mapMutations} from 'vuex'
 
   export default {
     name: "CityList",
@@ -49,8 +55,15 @@
       cities: Object,
       letter: String
     },
-    mounted() {
-      this.scroll = new BScroll(this.$refs.wrapper);
+    methods: {
+      handelCityClick(city) {
+        this.changeCity(city)
+        this.$router.push('/')
+      },
+      ...mapMutations(['changeCity'])
+    },
+    computed: {
+      ...mapState(['city'])
     },
     watch: {
       //  使用watch监听letter的变化，通过better-scroll组件的scrollToElement方法改变对应的显示区域
@@ -60,7 +73,15 @@
           this.scroll.scrollToElement(element)
         }
       }
-    }
+    },
+    mounted() {
+      //  解决better-scroll中click点击无效的问题
+      const options = {
+        click: true,
+        tap: true
+      }
+      this.scroll = new BScroll(this.$refs.wrapper, options);
+    },
   };
 </script>
 

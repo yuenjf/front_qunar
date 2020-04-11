@@ -12,7 +12,12 @@
   import BScroll from 'better-scroll'
 
   mounted() {
-    this.scroll = new BScroll(this.$refs.wrapper)
+    //  options解决better-scroll中click点击无效的问题
+    const options = {
+    click: true,
+    tap: true
+    }
+    this.scroll = new BScroll(this.$refs.wrapper,options)
   }
 ```
 
