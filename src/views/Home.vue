@@ -9,12 +9,13 @@
 </template>
 
 <script>
+  import {mapState} from 'vuex';
+  import axios from "axios";
   import HomeHeader from "../components/home/Header";
   import HomeSwiper from "../components/home/Swiper";
   import HomeIcons from "../components/home/Icons";
   import HomeRecommend from "../components/home/Recommend";
   import HomeWeekend from "../components/home/Weekend";
-  import axios from "axios";
 
   export default {
     name: "Home",
@@ -27,6 +28,7 @@
     },
     data() {
       return {
+        lastCity: '',
         swiperList: [],
         iconList: [],
         recommendList: [],
@@ -35,7 +37,7 @@
     },
     methods: {
       getHomeInfo() {
-        axios.get("/api/index.json").then(this.getHomeInfoSucc);
+        axios.get("/api/index.json?city=" + this.city).then(this.getHomeInfoSucc);
       },
       getHomeInfoSucc(res) {
         res = res.data;
@@ -48,9 +50,21 @@
         }
       },
     },
+    computed: {
+      ...mapState(['city'])
+    },
     created() {
       this.getHomeInfo();
     },
+    /*
+      使用keep-alive后只能调用activated钩子函数，当城市与内存中的城市不同时，就重新调用axios获取新数据
+    */
+    activated() {
+      if (this.lastCity !== this.city) {
+        this.lastCity = this.city
+        this.getHomeInfo()
+      }
+    }
   };
 </script>
 

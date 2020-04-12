@@ -21,10 +21,6 @@
 
   export default {
     name: "HomeHeader",
-    props: {
-      city: String,
-      default: "城市",
-    },
     computed: {
       ...mapState(['city'])
     }
