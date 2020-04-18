@@ -53,9 +53,15 @@
   left 0
 ```
 
-###Vue 笔记
+- 渐变
+```
+  background-image linear-gradient(top, rgba(0, 0, 0, 0), 
+                   rgba(0, 0, 0, .8))
+```
 
--
+###Vue 笔记
+- 使用keep-alive标签提升性能，使用后只能调用调用activated钩子函数
+- router-link可以代替li,使用<router-link tag=‘li’ :to='item.id> 代替
 
 ###错误
 
