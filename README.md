@@ -60,8 +60,11 @@
 ```
 
 ###Vue 笔记
-- 使用keep-alive标签提升性能，使用后只能调用调用activated钩子函数(页面被展示，钩子执行)
+- 使用keep-alive(用于保留组件状态或避免重新渲染)标签提升性能，提供了activated(页面展示)和deactivated(页面隐藏)的钩子函数，使用keep-alive后页面不会重新渲染，而是调用内存的数据，其他钩子函数无法再调用
 - router-link可以代替li,使用<router-link tag=‘li’ :to='item.id> 代替
+
+###JS 笔记
+- 使用window全局事件，一定要对事件进行解绑
 
 ###错误
 

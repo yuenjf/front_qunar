@@ -39,7 +39,6 @@
         if (top > 60) {
           let opacity = top / 140
           opacity = opacity > 1 ? 1 : opacity // 大于 1 就等于 1
-          console.log(opacity)
           this.opacityStyle = {
             opacity
           }
@@ -51,6 +50,9 @@
     },
     activated() {
       window.addEventListener('scroll', this.handleScroll)
+    },
+    deactivated() {
+      window.removeEventListener('scroll', this.handleScroll)
     }
   }
 </script>
