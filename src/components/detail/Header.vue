@@ -18,7 +18,6 @@
       </router-link>
       景点详情
     </div>
-    <div class="content"></div>
   </div>
 </template>
 
@@ -75,6 +74,7 @@
       font-size .4rem
 
   .header-fixed
+    z-index 98
     position fixed
     top 0
     right 0
@@ -93,7 +93,4 @@
       left 0
       font-size .4rem
       color #fff
-
-  .content
-    height 50rem
 </style>
