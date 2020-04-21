@@ -60,8 +60,24 @@
 ```
 
 ###Vue 笔记
-- 使用keep-alive(用于保留组件状态或避免重新渲染)标签提升性能，提供了activated(页面展示)和deactivated(页面隐藏)的钩子函数，使用keep-alive后页面不会重新渲染，而是调用内存的数据，其他钩子函数无法再调用
+- 使用keep-alive(用于保留组件状态或避免重新渲染)标签提升性能，使用后页面不会重新渲染，而是调用内存的数据，其他钩子函数无法再调用
+    + 提供了activated(页面展示)和deactivated(页面隐藏)的钩子函数
+    + exclude属性可以排除组件不被缓存
+    
 - router-link可以代替li,使用<router-link tag=‘li’ :to='item.id> 代替
+
+- vue多页面滚动互相影响,在router实例里添加scrollBehavior函数
+```
+ const router = new VueRouter({
+    routes,
+    scrollBehavior (to, from, savedPosition) {
+        return { x: 0, y: 0 }
+    } 
+ })
+```
+   
+
+
 
 ###JS 笔记
 - 使用window全局事件，一定要对事件进行解绑
