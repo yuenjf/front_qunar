@@ -84,4 +84,8 @@
 
 ###错误
 
-- Maximum call stack size exceeded，页面引用一个组件，和页面的 name 重复就会出现这个问题
+- Maximum call stack size exceeded
+    + 解决：页面引用一个组件，和页面的 name 重复就会出现这个问题
+
+- Unknown custom element: <ui> - did you register the component correctly? For recursive components, make sure to provide the "name" option.
+    + 解决：检查标签拼写是否错诶

@@ -1,5 +1,5 @@
 <template>
-  <ui class="list">
+  <ul class="list">
     <li class="item"
         v-for="item of letters"
         :key="item"
@@ -11,7 +11,7 @@
     >
       {{item}}
     </li>
-  </ui>
+  </ul>
 </template>
 
 <script>
