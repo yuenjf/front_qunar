@@ -1,10 +1,10 @@
-##project_travel 学习笔记
+# 使用 vue 搭建的移动端旅行网站  
 
-### 介绍
+## 介绍
 
  使用 vue + vue-cli3.x 搭建移动端旅游网站
 
-### 组件使用
+## 组件使用
 
 - 轮播插件 [vue-awesome-swiper@2.6.7](https://github.com/surmon-china/vue-awesome-swiper/tree/v2.6.7)
 - 局部滚动插件 [better-scroll@1.x](https://github.com/ustbhuangyi/better-scroll)
@@ -21,7 +21,7 @@
   }
 ```
 
-### 样式笔记
+## 样式笔记
 
 - 自动撑开
 ```
@@ -59,7 +59,7 @@
                    rgba(0, 0, 0, .8))
 ```
 
-###Vue 笔记
+## Vue 笔记
 - 使用keep-alive(用于保留组件状态或避免重新渲染)标签提升性能，使用后页面不会重新渲染，而是调用内存的数据，其他钩子函数无法再调用
     + 提供了activated(页面展示)和deactivated(页面隐藏)的钩子函数
     + exclude属性可以排除组件不被缓存
@@ -75,14 +75,12 @@
     } 
  })
 ```
-   
+- 真机测试，要使用内网ip地址访问，需要在package.json的script中添加 --host 0.0.0.0 参数
 
-
-
-###JS 笔记
+## JS 笔记
 - 使用window全局事件，一定要对事件进行解绑
 
-###错误
+## 错误
 
 - Maximum call stack size exceeded
     + 解决：页面引用一个组件，和页面的 name 重复就会出现这个问题
